@@ -47,6 +47,7 @@ public class LoginController {
         if (loginMember == null) {
             throw new WrongException(ErrorConst.WRONG_EXCEPTION.getMessage());
         }
+        log.info("login member={}", loginMember);
         return loginMember;
     }
 }
