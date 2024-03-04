@@ -8,4 +8,9 @@ import lombok.Data;
 public class ErrorResult {
     private String code;
     private String message;
+
+    public ErrorResult(ErrorConst errorConst) {
+        this.code = errorConst.getCode();
+        this.message = errorConst.getMessage();
+    }
 }
