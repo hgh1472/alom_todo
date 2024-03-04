@@ -4,6 +4,7 @@ package spring.todo.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -21,6 +22,7 @@ import java.util.List;
 @Slf4j
 public class MemberService {
 
+    private final PasswordEncoder passwordEncoder;
     private final MemberRepository memberRepository;
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -38,9 +40,10 @@ public class MemberService {
         }
         Member member = new Member();
         member.setEmail(memberDto.getEmail());
-        member.setPassword(memberDto.getPassword());
+        member.setPassword(passwordEncoder.encode(memberDto.getPassword()));
         member.setNickname(memberDto.getNickname());
         memberRepository.save(member);
+        log.info("joined member={}", member);
         return member.getId();
     }
 }
