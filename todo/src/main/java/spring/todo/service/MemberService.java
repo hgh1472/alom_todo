@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import spring.todo.domain.Member;
 import spring.todo.exception.DuplicateException;
+import spring.todo.exception.ErrorConst;
 import spring.todo.exception.ErrorResult;
 import spring.todo.repository.member.MemberDto;
 import spring.todo.repository.member.MemberRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,14 +27,14 @@ public class MemberService {
     @ExceptionHandler(DuplicateException.class)
     public ErrorResult duplicateExceptionHandler(DuplicateException e) {
         log.error("[duplicated email]", e);
-        return new ErrorResult("DUPLICATE", e.getMessage());
+        return new ErrorResult(ErrorConst.DUPLICATE_EXCEPTION);
     }
 
     public Long join(MemberDto memberDto) {
 
         List<Member> findMember = memberRepository.findByEmail(memberDto.getEmail());
         if (!findMember.isEmpty()) {
-            throw new DuplicateException("이미 존재하는 이메일입니다.");
+            throw new DuplicateException(ErrorConst.DUPLICATE_EXCEPTION.getMessage());
         }
         Member member = new Member();
         member.setEmail(memberDto.getEmail());
