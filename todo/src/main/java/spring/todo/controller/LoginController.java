@@ -12,6 +12,7 @@ import spring.todo.exception.ErrorConst;
 import spring.todo.exception.ErrorResult;
 import spring.todo.exception.WrongException;
 import spring.todo.repository.member.LoginDto;
+import spring.todo.repository.member.LoginOutputDto;
 import spring.todo.service.LoginService;
 import spring.todo.service.MemberService;
 
@@ -37,7 +38,7 @@ public class LoginController {
     private final LoginService loginService;
 
     @PostMapping("/login")
-    public Member login(@Valid @ModelAttribute LoginDto loginDto, BindingResult bindingResult) {
+    public LoginOutputDto login(@Valid @ModelAttribute LoginDto loginDto, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             throw new EmptyException(ErrorConst.EMPTY_EXCEPTION.getMessage());
@@ -48,6 +49,7 @@ public class LoginController {
             throw new WrongException(ErrorConst.WRONG_EXCEPTION.getMessage());
         }
         log.info("login member={}", loginMember);
-        return loginMember;
+        LoginOutputDto outputDto = new LoginOutputDto(loginMember.getEmail(), loginMember.getNickname());
+        return outputDto;
     }
 }
