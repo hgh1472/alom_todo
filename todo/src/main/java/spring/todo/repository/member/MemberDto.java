@@ -1,7 +1,6 @@
 package spring.todo.repository.member;
 
 import lombok.Data;
-import spring.todo.domain.Member;
 
 @Data
 public class MemberDto {

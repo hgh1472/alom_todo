@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import spring.todo.domain.Member;
 import spring.todo.exception.DuplicateException;
 import spring.todo.exception.ErrorConst;
 import spring.todo.exception.ErrorResult;

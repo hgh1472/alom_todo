@@ -14,7 +14,6 @@ import spring.todo.exception.WrongException;
 import spring.todo.repository.member.LoginDto;
 import spring.todo.repository.member.LoginOutputDto;
 import spring.todo.service.LoginService;
-import spring.todo.service.MemberService;
 
 @RestController
 @RequiredArgsConstructor

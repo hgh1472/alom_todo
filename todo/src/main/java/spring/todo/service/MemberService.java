@@ -3,15 +3,9 @@ package spring.todo.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import spring.todo.domain.Member;
-import spring.todo.exception.DuplicateException;
-import spring.todo.exception.ErrorConst;
-import spring.todo.exception.ErrorResult;
 import spring.todo.repository.member.MemberDto;
 import spring.todo.repository.member.MemberRepository;
 

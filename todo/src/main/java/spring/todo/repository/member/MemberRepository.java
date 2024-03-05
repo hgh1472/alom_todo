@@ -4,7 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import spring.todo.domain.Member;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
     public Member save(Member member);
