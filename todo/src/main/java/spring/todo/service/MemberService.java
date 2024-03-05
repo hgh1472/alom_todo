@@ -25,18 +25,13 @@ public class MemberService {
     private final PasswordEncoder passwordEncoder;
     private final MemberRepository memberRepository;
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(DuplicateException.class)
-    public ErrorResult duplicateExceptionHandler(DuplicateException e) {
-        log.error("[duplicated email]", e);
-        return new ErrorResult(ErrorConst.DUPLICATE_EXCEPTION);
-    }
 
     public Long join(MemberDto memberDto) {
 
         List<Member> findMember = memberRepository.findByEmail(memberDto.getEmail());
         if (!findMember.isEmpty()) {
-            throw new DuplicateException(ErrorConst.DUPLICATE_EXCEPTION.getMessage());
+            log.error("이미 존재하는 이메일={}", memberDto.getEmail());
+            return null;
         }
         Member member = new Member();
         member.setEmail(memberDto.getEmail());
