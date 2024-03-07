@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import spring.todo.domain.Member;
 import spring.todo.repository.member.MemberRepository;
 
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
