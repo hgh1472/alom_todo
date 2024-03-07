@@ -1,18 +1,18 @@
 package spring.todo.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import spring.todo.security.Authority;
+
 
 @Entity
-@Getter @Setter
+@Getter
+@NoArgsConstructor
 public class Member {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotEmpty
     private String email;
@@ -20,4 +20,14 @@ public class Member {
     private String password;
     @NotEmpty
     private String nickname;
+
+    @Enumerated(EnumType.STRING)
+    private Authority authority;
+
+    public Member(String email, String password, String nickname) {
+        this.email = email;
+        this.password = password;
+        this.nickname = nickname;
+        this.authority = Authority.MEMBER;
+    }
 }
