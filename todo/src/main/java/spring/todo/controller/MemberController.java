@@ -54,7 +54,7 @@ public class MemberController {
             throw new WrongAccessException(ErrorConst.WRONG_EXCEPTION.getMessage());
         }
         log.info("findMember={}", findMember.toString());
-        LoginOutputDto outputDto = new LoginOutputDto(findMember.getEmail(), findMember.getNickname());
+        LoginOutputDto outputDto = new LoginOutputDto(findMember);
         log.info("email = {}, nickname={}", outputDto.getEmail(), outputDto.getNickname());
         return outputDto;
     }

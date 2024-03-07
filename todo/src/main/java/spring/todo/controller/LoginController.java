@@ -58,8 +58,8 @@ public class LoginController {
         cookie.setSecure(false);
         response.addCookie(cookie);
 
-        log.info("login member={}", loginMember);
-        LoginOutputDto outputDto = new LoginOutputDto(loginMember.getEmail(), loginMember.getNickname());
+        log.info("login member={}", loginMember.toString());
+        LoginOutputDto outputDto = new LoginOutputDto(loginMember);
         return outputDto;
     }
 }

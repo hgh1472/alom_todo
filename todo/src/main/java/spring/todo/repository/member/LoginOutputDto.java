@@ -1,11 +1,15 @@
 package spring.todo.repository.member;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import spring.todo.domain.Member;
 
 @Data
-@AllArgsConstructor
 public class LoginOutputDto {
     private String email;
     private String nickname;
+
+    public LoginOutputDto(Member member) {
+        this.email = member.getEmail();
+        this.nickname = member.getEmail();
+    }
 }
