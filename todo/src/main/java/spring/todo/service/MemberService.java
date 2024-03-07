@@ -6,10 +6,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import spring.todo.domain.Member;
+import spring.todo.repository.member.LoginOutputDto;
 import spring.todo.repository.member.MemberDto;
 import spring.todo.repository.member.MemberRepository;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,17 +23,20 @@ public class MemberService {
 
     public Long join(MemberDto memberDto) {
 
-        List<Member> findMember = memberRepository.findByEmail(memberDto.getEmail());
+        Optional<Member> findMember = memberRepository.findByEmail(memberDto.getEmail());
         if (!findMember.isEmpty()) {
             log.error("이미 존재하는 이메일={}", memberDto.getEmail());
             return null;
         }
-        Member member = new Member();
-        member.setEmail(memberDto.getEmail());
-        member.setPassword(passwordEncoder.encode(memberDto.getPassword()));
-        member.setNickname(memberDto.getNickname());
+        Member member = new Member(memberDto.getEmail(), passwordEncoder.encode(memberDto.getPassword()), memberDto.getNickname());
         memberRepository.save(member);
         log.info("joined member={}", member);
         return member.getId();
+    }
+
+    public Member getMemberInfo(Long memberId) {
+        Optional<Member> findMember = memberRepository.findById(memberId);
+        return findMember.filter(member -> member.getId().equals(memberId))
+                .orElse(null);
     }
 }
