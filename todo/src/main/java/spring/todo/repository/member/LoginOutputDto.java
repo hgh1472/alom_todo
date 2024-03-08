@@ -10,6 +10,6 @@ public class LoginOutputDto {
 
     public LoginOutputDto(Member member) {
         this.email = member.getEmail();
-        this.nickname = member.getEmail();
+        this.nickname = member.getNickname();
     }
 }
