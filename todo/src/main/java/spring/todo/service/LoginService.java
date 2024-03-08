@@ -17,9 +17,7 @@ public class LoginService {
 
     public Member login(String loginEmail, String password) {
         Optional<Member> findMembers = memberRepository.findByEmail(loginEmail);
-        return findMembers.stream()
-                .filter(member -> passwordEncoder.matches(password, member.getPassword()))
-                .findAny()
+        return findMembers.filter(member -> passwordEncoder.matches(password, member.getPassword()))
                 .orElse(null);
     }
 }
