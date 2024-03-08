@@ -41,7 +41,7 @@ public class LoginController {
     private final LoginService loginService;
 
     @PostMapping("/login")
-    public LoginOutputDto login(@Valid @ModelAttribute LoginDto loginDto, BindingResult bindingResult, HttpServletResponse response) {
+    public LoginOutputDto login(@Valid @RequestBody LoginDto loginDto, BindingResult bindingResult, HttpServletResponse response) {
 
         if (bindingResult.hasErrors()) {
             throw new EmptyException(ErrorConst.EMPTY_EXCEPTION.getMessage());

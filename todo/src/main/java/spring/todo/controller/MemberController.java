@@ -35,7 +35,7 @@ public class MemberController {
     }
 
     @PostMapping("/join")
-    public Long join(MemberDto memberDto) {
+    public Long join(@RequestBody MemberDto memberDto) {
         log.info("email={}", memberDto.getEmail());
         log.info("password={}", memberDto.getPassword());
         log.info("nickname={}", memberDto.getNickname());
