@@ -1,4 +1,4 @@
-package spring.todo.domain;
+package spring.todo.domain.member.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;

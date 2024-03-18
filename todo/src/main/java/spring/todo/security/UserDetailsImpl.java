@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import spring.todo.domain.Member;
+import spring.todo.domain.member.domain.Member;
 
 import java.util.ArrayList;
 import java.util.Collection;

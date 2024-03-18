@@ -1,4 +1,4 @@
-package spring.todo.controller;
+package spring.todo.web.controller;
 
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
@@ -10,15 +10,15 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.core.Authentication;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import spring.todo.domain.Member;
+import spring.todo.domain.member.domain.Member;
 import spring.todo.exception.EmptyException;
 import spring.todo.exception.ErrorConst;
 import spring.todo.exception.ErrorResult;
 import spring.todo.exception.WrongException;
-import spring.todo.repository.member.LoginDto;
+import spring.todo.domain.member.repository.LoginDto;
 import spring.todo.security.JwtTokenDto;
 import spring.todo.security.JwtTokenProvider;
-import spring.todo.service.LoginService;
+import spring.todo.web.service.LoginService;
 
 @RestController
 @RequiredArgsConstructor

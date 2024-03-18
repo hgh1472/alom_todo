@@ -1,17 +1,17 @@
-package spring.todo.controller;
+package spring.todo.domain.member.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import spring.todo.domain.Member;
+import spring.todo.domain.member.domain.Member;
 import spring.todo.exception.DuplicateException;
 import spring.todo.exception.ErrorConst;
 import spring.todo.exception.ErrorResult;
 import spring.todo.exception.WrongAccessException;
-import spring.todo.repository.member.LoginOutputDto;
-import spring.todo.repository.member.MemberDto;
-import spring.todo.service.MemberService;
+import spring.todo.domain.member.repository.LoginOutputDto;
+import spring.todo.domain.member.repository.MemberDto;
+import spring.todo.domain.member.service.MemberService;
 
 @RestController
 @RequiredArgsConstructor

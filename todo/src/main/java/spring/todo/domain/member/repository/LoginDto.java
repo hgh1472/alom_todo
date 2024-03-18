@@ -1,4 +1,4 @@
-package spring.todo.repository.member;
+package spring.todo.domain.member.repository;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;

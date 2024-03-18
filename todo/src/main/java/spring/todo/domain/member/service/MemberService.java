@@ -1,13 +1,13 @@
-package spring.todo.service;
+package spring.todo.domain.member.service;
 
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import spring.todo.domain.Member;
-import spring.todo.repository.member.MemberDto;
-import spring.todo.repository.member.MemberRepository;
+import spring.todo.domain.member.domain.Member;
+import spring.todo.domain.member.repository.MemberDto;
+import spring.todo.domain.member.repository.MemberRepository;
 
 import java.util.Optional;
 

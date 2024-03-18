@@ -1,7 +1,7 @@
-package spring.todo.repository.member;
+package spring.todo.domain.member.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import spring.todo.domain.Member;
+import spring.todo.domain.member.domain.Member;
 
 import java.util.Optional;
 

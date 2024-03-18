@@ -1,7 +1,7 @@
-package spring.todo.repository.member;
+package spring.todo.domain.member.repository;
 
 import lombok.Data;
-import spring.todo.domain.Member;
+import spring.todo.domain.member.domain.Member;
 
 @Data
 public class LoginOutputDto {
