@@ -33,16 +33,20 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
+                // Rest API이므로 basic auth 및 csrf 보안을 사용하지 않는다.
                 .httpBasic().disable()
                 .csrf().disable()
+                // JWT를 사용하기 때문에 세션을 사용하지 않는다.
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers("/login").permitAll()
                 .requestMatchers("/join").permitAll()
                 .requestMatchers("/login/test").permitAll()
+                // MEMBER 권한이 있어야 요청할 수 있음
                 .requestMatchers("/members/{id}").hasAuthority(Authority.MEMBER.getAuthority())
                 .and()
+                // JWT 인증을 위하여 직접 구현한 필터를 UsernamePasswordAuthenticationFilter 전에 실행
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
