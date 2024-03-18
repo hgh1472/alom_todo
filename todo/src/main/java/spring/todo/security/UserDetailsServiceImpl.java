@@ -15,13 +15,10 @@ import spring.todo.repository.member.MemberRepository;
 @Slf4j
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-
-
     private final MemberRepository memberRepository;
     @Override
-    public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
-        long memberId = Long.parseLong(id);
-        Member member = memberRepository.findById(memberId)
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Member member = memberRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("사용자를 찾을 수 없습니다."));
 
         return new UserDetailsImpl(member, member.getPassword(), member.getEmail());
