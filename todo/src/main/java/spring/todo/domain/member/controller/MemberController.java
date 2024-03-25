@@ -9,8 +9,8 @@ import spring.todo.exception.DuplicateException;
 import spring.todo.exception.ErrorConst;
 import spring.todo.exception.ErrorResult;
 import spring.todo.exception.WrongAccessException;
-import spring.todo.domain.member.repository.LoginOutputDto;
-import spring.todo.domain.member.repository.MemberDto;
+import spring.todo.domain.member.repository.LoginResponseDto;
+import spring.todo.domain.member.repository.JoinDto;
 import spring.todo.domain.member.service.MemberService;
 
 @RestController
@@ -35,11 +35,9 @@ public class MemberController {
     }
 
     @PostMapping("/join")
-    public Long join(@RequestBody MemberDto memberDto) {
-        log.info("email={}", memberDto.getEmail());
-        log.info("password={}", memberDto.getPassword());
-        log.info("nickname={}", memberDto.getNickname());
-        Long memberId = memberService.join(memberDto);
+    public Long join(@RequestBody JoinDto joinDto) {
+        log.info("[MemberController.join] JoinDto : {}", joinDto);
+        Long memberId = memberService.join(joinDto);
         if (memberId == null) {
             throw new DuplicateException(ErrorConst.DUPLICATE_EXCEPTION.getMessage());
         }
@@ -47,15 +45,15 @@ public class MemberController {
     }
 
     @PostMapping("/members/{id}")
-    public LoginOutputDto memberInfo(@PathVariable String id) {
+    public LoginResponseDto memberInfo(@PathVariable String id) {
+        log.info("[MemberController.memberInfo] id={}", id);
         Long memberId = Long.parseLong(id);
         Member findMember = memberService.getMemberInfo(memberId);
         if (findMember == null) {
             throw new WrongAccessException(ErrorConst.WRONG_EXCEPTION.getMessage());
         }
-        log.info("findMember={}", findMember.toString());
-        LoginOutputDto outputDto = new LoginOutputDto(findMember);
-        log.info("email = {}, nickname={}", outputDto.getEmail(), outputDto.getNickname());
-        return outputDto;
+        LoginResponseDto loginResponseDto = LoginResponseDto.of(findMember);
+        log.info("[MemberController.memberInfo] LoginResponseDto={}", loginResponseDto);
+        return loginResponseDto;
     }
 }
