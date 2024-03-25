@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Getter
-public class TodoList {
+public class TodoListInfo {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long code;

@@ -1,12 +1,11 @@
 package spring.todo.domain.member.repository;
 
-import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
 @Data
-public class LoginDto {
-    @NotEmpty
+public class JoinDto {
     private String email;
-    @NotEmpty
     private String password;
+    private String nickname;
+
 }
