@@ -6,17 +6,12 @@ import spring.todo.domain.member.domain.Member;
 
 @Data
 @Builder
-public class LoginOutputDto {
+public class LoginResponseDto {
     private String email;
     private String nickname;
 
-    public LoginOutputDto(Member member) {
-        this.email = member.getEmail();
-        this.nickname = member.getNickname();
-    }
-
-    public static LoginOutputDto of(Member member) {
-        return LoginOutputDto.builder()
+    public static LoginResponseDto of(Member member) {
+        return LoginResponseDto.builder()
                 .email(member.getEmail())
                 .nickname(member.getNickname())
                 .build();
