@@ -1,27 +1,32 @@
 package spring.todo.domain.todo.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
-@Getter @Setter
+@Getter
+@Builder
+@NoArgsConstructor @AllArgsConstructor
 public class Todo {
     @Column(name = "todo_id")
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "list_id")
-    private Long listId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "todo_list_info_code")
+    private TodoListInfo todoListInfo;
 
     private String description;
 
     private boolean isCompleted;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
     private LocalDateTime startTime;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
     private LocalDateTime endTime;
+
 }

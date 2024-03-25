@@ -1,13 +1,16 @@
 package spring.todo.domain.todo.domain;
 
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.*;
 import spring.todo.domain.member.domain.Member;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter
+@Builder
+@NoArgsConstructor @AllArgsConstructor
 public class TodoListInfo {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +19,6 @@ public class TodoListInfo {
     @OneToOne
     private Member writer;
 
-    @OneToMany
-    @JoinColumn(name = "list_id")
-    private List<Todo> todoList;
+    @OneToMany(mappedBy = "todoListInfo", cascade = CascadeType.ALL)
+    private List<Todo> todoList = new ArrayList<>();
 }
