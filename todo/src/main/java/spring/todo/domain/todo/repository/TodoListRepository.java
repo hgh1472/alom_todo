@@ -1,13 +1,12 @@
 package spring.todo.domain.todo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import spring.todo.domain.todo.domain.TodoList;
+import spring.todo.domain.todo.domain.TodoListInfo;
 
-public interface TodoListRepository extends JpaRepository<TodoList, Long> {
+public interface TodoListRepository extends JpaRepository<TodoListInfo, Long> {
 
-    public Long save(TodoList todoList);
+    public TodoListInfo save(TodoListInfo todoListInfo);
 
-    public TodoList readTodoListByCode(Long code);
+    public TodoListInfo findTodoListInfoByCode(Long code);
 
-    public Long deleteTodoListByCode(Long code);
 }
