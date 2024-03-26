@@ -15,7 +15,8 @@ public class Todo {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @Setter
+    @ManyToOne
     @JoinColumn(name = "todo_list_info_code")
     private TodoListInfo todoListInfo;
 

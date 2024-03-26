@@ -16,7 +16,8 @@ public class TodoListInfo {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long code;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "writer_id")
     private Member writer;
 
     @OneToMany(mappedBy = "todoListInfo", cascade = CascadeType.ALL)
