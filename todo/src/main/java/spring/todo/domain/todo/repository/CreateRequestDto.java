@@ -3,7 +3,6 @@ package spring.todo.domain.todo.repository;
 import lombok.Builder;
 import lombok.Data;
 import spring.todo.domain.member.domain.Member;
-import spring.todo.domain.member.repository.MemberRepository;
 import spring.todo.domain.todo.domain.TodoListInfo;
 
 import java.util.List;
