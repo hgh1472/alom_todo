@@ -13,7 +13,6 @@ import spring.todo.domain.todo.repository.CreateRequestDto;
 import spring.todo.domain.todo.repository.ReadTodoListDto;
 import spring.todo.domain.todo.service.TodoService;
 
-
 @RestController
 @RequiredArgsConstructor
 @Slf4j
@@ -35,8 +34,12 @@ public class TodoListController {
     public ReadTodoListDto readTodoListInfo(@PathVariable Long code) {
         TodoListInfo todoListInfo = todoService.readTodoListInfo(code);
         ReadTodoListDto readTodoListDto = ReadTodoListDto.of(todoListInfo);
-        log.info("[TOdoListController.readTodoListInfo] ReadTodoListDto={}", readTodoListDto);
+        log.info("[TodoListController.readTodoListInfo] ReadTodoListDto={}", readTodoListDto);
         return readTodoListDto;
     }
 
+    @PostMapping("/todolist/{code}/delete")
+    public Long deleteTodoListInfo(@PathVariable Long code) {
+        return todoService.deleteTodoListInfo(code);
+    }
 }
