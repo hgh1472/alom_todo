@@ -45,6 +45,7 @@ public class SecurityConfig {
                 .requestMatchers("/login/test").permitAll()
                 .requestMatchers("/todolist/create").permitAll()
                 .requestMatchers("todolist/{code}").permitAll()
+                .requestMatchers("todolist/{code}/delete").permitAll()
                 // MEMBER 권한이 있어야 요청할 수 있음
                 .requestMatchers("/members/{id}").hasAuthority(Authority.MEMBER.getAuthority())
                 .and()
