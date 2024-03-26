@@ -9,4 +9,5 @@ public interface TodoListRepository extends JpaRepository<TodoListInfo, Long> {
 
     public TodoListInfo findTodoListInfoByCode(Long code);
 
+    public Long removeTodoListInfoByCode(Long code);
 }
